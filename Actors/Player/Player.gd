@@ -10,6 +10,7 @@ export var air_accel = 5.0;
 export var walk_friction = 1e-15;
 
 const FLOOR_DETECT_DISTANCE = 20.0
+var current_anim;
 
 func _ready():
 	Globals.player = self
@@ -17,12 +18,16 @@ func _ready():
 func _physics_process(_delta):
 	# Update horizontal velocity based on input
 	var dir = get_input_direction();
+	var next_anim = null;
 	if is_on_floor():
 		if abs(dir) > 0:
 			_velocity.x = get_input_direction() * walk_accel * _delta;
 			# Cap maximum horizontal velocity on ground
 			if abs(_velocity.x) > walk_speed_max:
 				_velocity.x = sign(_velocity.x) * walk_speed_max;
+			# Change direction of sprite
+			$Sprite.scale.x = sign(dir) * abs($Sprite.scale.x);
+			next_anim = "Walk";
 		else:
 			# Apply friction on ground
 			_velocity.x *= pow(walk_friction, _delta);
@@ -30,6 +35,13 @@ func _physics_process(_delta):
 				_velocity.x = 0
 	else:
 		_velocity.x += get_input_direction() * air_accel * _delta;
+	# Update animation
+	if next_anim != current_anim:
+		if next_anim == null:
+			$AnimationPlayer.play("RESET");
+		else:
+			$AnimationPlayer.play(next_anim);
+		current_anim = next_anim
 	# Snap to slopes
 	var snap_vector = Vector2.DOWN * FLOOR_DETECT_DISTANCE
 	_velocity = move_and_slide_with_snap(_velocity, snap_vector, FLOOR_NORMAL, true);

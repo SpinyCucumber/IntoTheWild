@@ -1,29 +1,31 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Logic/Teleporter/Teleporter.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Props/Tree/Tree.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Textures/Dirt.png" type="Texture" id=4]
+[ext_resource path="res://Textures/Trees.png" type="Texture" id=5]
+[ext_resource path="res://Props/Bus/Bus.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Textures/Grass.png" type="Texture" id=7]
+[ext_resource path="res://Textures/Sky.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 45.6984, 10 )
 
 [node name="Area1" type="Node2D"]
 
-[node name="Ground" type="StaticBody2D" parent="."]
-position = Vector2( 0, 38.0933 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground"]
-polygon = PoolVector2Array( 10.8008, -11.2068, 30.3076, -15.9915, 115.512, -26.849, 172.195, -29.155, 252.755, -50.5059, 279.35, -49.7568, 317.182, -27.2822, 346.399, -22.7872, 347.523, 75.7265, -108.337, 77.2248, -108.712, -5.93129, -71.6285, 4.55686, -33.4217, 0.436516 )
-
 [node name="Spawn1" type="Node2D" parent="."]
+position = Vector2( 0, 43.8255 )
 
 [node name="Spawn2" type="Node2D" parent="."]
-position = Vector2( -70.795, 16.4814 )
+position = Vector2( -481.706, 9.36446 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 13.1102, 19.1034 )
+z_index = -1
 
 [node name="Teleporter" parent="." instance=ExtResource( 2 )]
-position = Vector2( -108.627, -0.37458 )
+position = Vector2( -516.541, -1.8729 )
 area_name = "Area2"
 spawn_name = "Spawn1"
 
@@ -32,7 +34,59 @@ position = Vector2( 0, -7.16848 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
+[node name="Bus" parent="." instance=ExtResource( 6 )]
+position = Vector2( -159.534, -20.6362 )
+z_index = -2
+
 [node name="Tree" parent="." instance=ExtResource( 3 )]
-position = Vector2( 135.971, -14.6085 )
+position = Vector2( 139.146, -39.2132 )
+z_index = -2
+
+[node name="Ground" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground"]
+visible = false
+polygon = PoolVector2Array( 22.3446, 65.874, 93.1396, 59.1316, 159.44, 59.1316, 213.004, 69.6197, 272.187, 73.7401, 309.645, 70.7435, 412.962, 63.2519, 585.878, 61.3195, 586.016, 191.628, -631.505, 192.302, -632.629, 35.0991, -547.566, 23.8618, -504.115, 32.8516, -382.905, 64.6907, -331.588, 69.5602, -244.073, 57.1991, -182.268, 55.3262, -128.329, 61.3195 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Polygon2D" type="Polygon2D" parent="Ground"]
+texture = ExtResource( 4 )
+polygon = PoolVector2Array( 22.3446, 65.874, 93.1396, 59.1316, 159.44, 59.1316, 213.004, 69.6197, 272.187, 73.7401, 309.645, 70.7435, 412.962, 63.2519, 585.878, 61.3195, 586.016, 191.628, -726.323, 191.792, -726.323, 25.5095, -547.566, 23.8618, -504.115, 32.8516, -382.905, 64.6907, -331.588, 69.5602, -244.073, 57.1991, -182.268, 55.3262, -128.329, 61.3195 )
+
+[node name="Background" type="Node2D" parent="."]
+z_index = -2
+
+[node name="Sprite2" type="Sprite" parent="Background"]
+position = Vector2( 280.176, 60.3212 )
+texture = ExtResource( 7 )
+
+[node name="Foreground" type="Node2D" parent="."]
+z_index = -1
+
+[node name="Sprite" type="Sprite" parent="Foreground"]
+position = Vector2( -666.708, -69.8456 )
+texture = ExtResource( 5 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( -44.4472, 47.622 )
+texture = ExtResource( 8 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 4000, 400 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.5, 0.5 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( -107.15, -12.6992 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 4000, 250 )
 
 [editable path="Teleporter"]

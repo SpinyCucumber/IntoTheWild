@@ -21,6 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="IntoTheWild"
+run/main_scene="res://Gui/Title/Title.tscn"
 
 [autoload]
 

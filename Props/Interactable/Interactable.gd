@@ -5,7 +5,7 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
-const ActionHint = preload("res://Gui/ActionHint.tscn");
+const ActionHint = preload("res://Gui/ActionHint/ActionHint.tscn");
 const keys = ['E', 'Q'];
 
 export(Array) var actions;
