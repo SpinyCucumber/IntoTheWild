@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Props/Drop/Drop.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Logic/PlayerDetector/PlayerDetector.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Props/Tree/Stick.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 20.0
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 6, 2 )
+extents = Vector2( 13, 2 )
 
 [node name="Stick" instance=ExtResource( 1 )]
 actions = [ "pickup" ]
@@ -19,6 +20,11 @@ shape = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="." index="3"]
+position = Vector2( 0.148651, -4.16222 )
+rotation = 0.0855211
+texture = ExtResource( 3 )
 
 [connection signal="player_entered" from="PlayerDetector" to="." method="set_can_interact" binds= [ true ]]
 [connection signal="player_left" from="PlayerDetector" to="." method="set_can_interact" binds= [ false ]]

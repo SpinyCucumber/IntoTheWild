@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Logic/Teleporter/Teleporter.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Props/Tree/Stick.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Props/Tree/Tree.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 45.6984, 10 )
@@ -32,7 +32,7 @@ position = Vector2( 0, -7.16848 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
-[node name="Stick" parent="." instance=ExtResource( 3 )]
-position = Vector2( 91.3967, 5.24407 )
+[node name="Tree" parent="." instance=ExtResource( 3 )]
+position = Vector2( 135.971, -14.6085 )
 
 [editable path="Teleporter"]
