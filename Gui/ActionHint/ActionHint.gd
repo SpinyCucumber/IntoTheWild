@@ -1,8 +1,10 @@
 extends Label
 
-var action_name;
-var action_key;
+var action_name
+var key_num
+
+var key_names = ['E', 'Q', 'R'];
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	text = action_key + " - " + action_name;
+	text = key_names[key_num] + " - " + action_name;

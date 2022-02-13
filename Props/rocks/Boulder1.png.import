@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Stick.png-79e9e397e4aac46d85908084fb6f4286.stex"
+path="res://.import/Boulder1.png-a363c4bd78cbd1beb87e8283cd70b145.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Props/Tree/Stick.png"
-dest_files=[ "res://.import/Stick.png-79e9e397e4aac46d85908084fb6f4286.stex" ]
+source_file="res://Props/rocks/Boulder1.png"
+dest_files=[ "res://.import/Boulder1.png-a363c4bd78cbd1beb87e8283cd70b145.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

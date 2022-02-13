@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Props/Interactable/Interactable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Props/Interactable/Action.gd" type="Script" id=2]
+[ext_resource path="res://Items/ItemHeld/ItemHeld.gd" type="Script" id=3]
+
+[node name="Interactable" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="Action1" type="Node" parent="Actions" index="0"]
+script = ExtResource( 2 )
+action_name = "Drop"
+method = "drop"

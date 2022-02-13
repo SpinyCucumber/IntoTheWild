@@ -49,7 +49,7 @@ shape = SubResource( 2 )
 position = Vector2( 52.2867, 32.758 )
 
 [node name="Door" parent="." instance=ExtResource( 2 )]
-position = Vector2( 83.1548, 20.1587 )
+position = Vector2( 131.032, 20.1587 )
 area_name = "Area1"
 spawn_name = "Spawn1"
 
@@ -59,11 +59,21 @@ action_name = "Exit"
 method = "use"
 
 [node name="PlayerDetector" parent="Door" instance=ExtResource( 4 )]
-position = Vector2( -0.630005, 0 )
+position = Vector2( -36.5378, -0.629959 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door/PlayerDetector"]
 position = Vector2( 0.629944, -0.629959 )
 shape = SubResource( 3 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( 2, 0 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -151.5, 70.5, -147.5, 53, -129.5, 45.5, -114.5, 45, -100.5, 53.5, -96.5, 61.5, -96.5, 80, -152, 81 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+position = Vector2( 155.5, 0.5 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -151.5, 70.5, -147.5, 53, -129.5, 45.5, -114.5, 45, -100.5, 53.5, -96.5, 61.5, -96.5, 80, -152, 81 )
 
 [connection signal="player_entered" from="Door/PlayerDetector" to="Door" method="set_can_interact" binds= [ true ]]
 [connection signal="player_left" from="Door/PlayerDetector" to="Door" method="set_can_interact" binds= [ false ]]

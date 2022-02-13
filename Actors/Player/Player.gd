@@ -11,6 +11,9 @@ export var walk_friction = 1e-15;
 
 const FLOOR_DETECT_DISTANCE = 20.0
 var current_anim;
+var held_item;
+
+onready var hand = $Sprite/Arms/Hand;
 
 func _ready():
 	Globals.player = self
@@ -49,6 +52,17 @@ func _physics_process(_delta):
 # Direction user is inputting along x-axis
 func get_input_direction():
 	return Input.get_action_strength("move_right") - Input.get_action_strength("move_left");
+
+func hold_item(item):
+	held_item = item;
+	hand.add_child(item.Held.instance());	
+
+func drop_item():
+	hand.get_child(0).queue_free();
+	var drop = held_item.Drop.instance();
+	held_item = null;
+	Globals.area_system.current_area.add_child(drop);
+	drop.global_position = hand.global_position;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
