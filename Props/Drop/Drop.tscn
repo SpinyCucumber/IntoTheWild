@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Props/Drop/Drop.gd" type="Script" id=1]
+[ext_resource path="res://Props/Interactable/Action.gd" type="Script" id=2]
 
 [node name="Drop" type="RigidBody2D"]
 script = ExtResource( 1 )
@@ -12,3 +13,10 @@ margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Actions" type="Node" parent="."]
+
+[node name="Action1" type="Node" parent="Actions"]
+script = ExtResource( 2 )
+action_name = "Pickup"
+method = "pickup"

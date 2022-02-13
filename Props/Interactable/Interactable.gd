@@ -8,14 +8,13 @@ extends Node2D
 const ActionHint = preload("res://Gui/ActionHint/ActionHint.tscn");
 const keys = ['E', 'Q'];
 
-export(Array) var actions;
 var can_interact = false setget set_can_interact
 
 func _ready():
 	var i = 0;
-	for action_name in actions:
+	for action in $Actions.get_children():
 		var action_hint = ActionHint.instance();
-		action_hint.action_name = action_name;
+		action_hint.action_name = action.action_name;
 		action_hint.action_key = keys[i];
 		$ActionHints.add_child(action_hint);
 		i += 1
@@ -26,7 +25,9 @@ func set_can_interact(value):
 
 func _input(event):
 	if can_interact:
+		var index = null;
 		if event.is_action_pressed("interact_primary"):
-			call(actions[0])
+			index = 0
 		elif event.is_action_pressed("interact_secondary"):
-			call(actions[1])
+			index = 1
+		if index != null: call($Actions.get_child(index).method);
